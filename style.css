@@ -1,0 +1,95 @@
+:root {
+    --primary-color: #ff4757;
+    --secondary-color: #2ed573;
+    --bg-color: #ffe2e2;
+    --card-bg: #ffffff;
+    --text-color: #2f3542;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffe2e2 0%, #ffc7c7 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    background: var(--card-bg);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+    width: 500px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.header_text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 100px;
+    /* Space for growing button */
+}
+
+.btn {
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-yes {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-yes:hover {
+    transform: scale(1.05);
+    background-color: #26af61;
+}
+
+.btn-no {
+    background-color: var(--primary-color);
+    color: white;
+    position: relative;
+    /* For teleporting logic */
+}
+
+.image-container img {
+    max-width: 200px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+/* Celebration Styles */
+.celebration-container {
+    display: none;
+    /* Hidden by default */
+    flex-direction: column;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
