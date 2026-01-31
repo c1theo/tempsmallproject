@@ -25,24 +25,24 @@ const messages = [
 
 noBtn.addEventListener('click', () => {
     noClickCount++;
-    
+
     // Decrease No button size
     // Start trying to move away after a few clicks or when small
     const currentScale = 1 - (noClickCount * 0.1);
-    
+
     if (currentScale < 0.2) {
         // Teleport mode engaged fully
         noBtn.style.position = 'absolute';
         teleportButton();
         return;
     }
-    
+
     noBtn.style.transform = `scale(${currentScale})`;
-    
+
     // Increase Yes button size
     const yesScale = 1 + (noClickCount * 0.2);
     yesBtn.style.transform = `scale(${yesScale})`;
-    
+
     // Change text (cycle through messages)
     const messageIndex = Math.min(noClickCount, messages.length - 1);
     noBtn.innerText = messages[messageIndex];
@@ -59,14 +59,14 @@ function teleportButton() {
     // Determine container bounds
     const containerRect = document.querySelector('.container').getBoundingClientRect();
     const btnRect = noBtn.getBoundingClientRect();
-    
+
     // Calculate available space within the window, but let's keep it somewhat near or within screen
     const maxX = window.innerWidth - btnRect.width;
     const maxY = window.innerHeight - btnRect.height;
-    
+
     const randomX = Math.random() * maxX;
     const randomY = Math.random() * maxY;
-    
+
     // Apply fixed position for teleporting around the whole screen
     noBtn.style.position = 'fixed';
     noBtn.style.left = randomX + 'px';
@@ -76,6 +76,34 @@ function teleportButton() {
 yesBtn.addEventListener('click', () => {
     questionContainer.classList.add('hidden');
     celebrationContainer.style.display = 'flex';
-    
-    // Optional: Trigger confetti or extra effects here
+
+    // Trigger confetti
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
+
+    // Continuous confetti for a few seconds
+    var duration = 3000;
+    var end = Date.now() + duration;
+
+    (function frame() {
+        confetti({
+            particleCount: 3,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 }
+        });
+        confetti({
+            particleCount: 3,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 }
+        });
+
+        if (Date.now() < end) {
+            requestAnimationFrame(frame);
+        }
+    }());
 });
