@@ -77,5 +77,40 @@ yesBtn.addEventListener('click', () => {
     questionContainer.classList.add('hidden');
     celebrationContainer.style.display = 'flex';
 
-    // Optional: Trigger confetti or extra effects here
+    // Trigger Heart Confetti
+    if (typeof confetti === 'function') {
+        confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { y: 0.6 },
+            shapes: ['heart'],
+            colors: ['#FFC0CB', '#FF69B4', '#FF1493', '#C71585']
+        });
+
+        // Continuous burst for a few seconds
+        let end = Date.now() + 2000;
+
+        (function frame() {
+            confetti({
+                particleCount: 5,
+                angle: 60,
+                spread: 55,
+                origin: { x: 0 },
+                shapes: ['heart'],
+                colors: ['#FFC0CB', '#FF69B4']
+            });
+            confetti({
+                particleCount: 5,
+                angle: 120,
+                spread: 55,
+                origin: { x: 1 },
+                shapes: ['heart'],
+                colors: ['#FFC0CB', '#FF69B4']
+            });
+
+            if (Date.now() < end) {
+                requestAnimationFrame(frame);
+            }
+        }());
+    }
 });

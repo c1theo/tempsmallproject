@@ -26,6 +26,8 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     max-width: 90%;
     width: 500px;
+    z-index: 10;
+    /* Keep above roses */
     position: relative;
     transition: transform 0.3s ease;
 }
@@ -80,6 +82,7 @@ body {
     max-width: 200px;
     margin-bottom: 20px;
     border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Celebration Styles */
@@ -92,4 +95,72 @@ body {
 
 .hidden {
     display: none;
+}
+
+/* Roses Animation */
+.roses-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.rose {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.6;
+    animation: float 6s infinite ease-in-out;
+}
+
+.r1 {
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.r2 {
+    top: 10%;
+    right: 10%;
+    animation-delay: 2s;
+}
+
+.r3 {
+    bottom: 10%;
+    left: 10%;
+    animation-delay: 4s;
+}
+
+.r4 {
+    bottom: 10%;
+    right: 10%;
+    animation-delay: 1s;
+}
+
+.r5 {
+    top: 50%;
+    left: 5%;
+    animation-delay: 3s;
+}
+
+.r6 {
+    top: 50%;
+    right: 5%;
+    animation-delay: 5s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
 }
